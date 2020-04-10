@@ -18,6 +18,9 @@ public class GT4500 implements SpaceShip {
   }
 
   public boolean fireLaser(FiringMode firingMode) {
+	  
+	  if(!primaryTorpedoStore.isEmpty())
+		  return true;
 	  return false;
   }
 

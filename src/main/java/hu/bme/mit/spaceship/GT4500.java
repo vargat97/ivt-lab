@@ -18,7 +18,9 @@ public class GT4500 implements SpaceShip {
   }
 
   public boolean fireLaser(FiringMode firingMode) {
-	  return false;
+	  // Try to modify something on branch B
+	  // modified the return value;
+	  return true;
   }
 
   /**

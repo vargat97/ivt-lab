@@ -1,6 +1,5 @@
 package hu.bme.mit.spaceship;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -38,6 +37,20 @@ public class GT4500Test {
     ship.fireTorpedo(FiringMode.SINGLE);
 
     verify(torpedoStore, times(1)).fire(1);
+  }
+
+  @Test
+  public void fireTorpedo_WasPrimaryButSecondaryEmpty(){
+    when(torpedoStore.fire(1)).thenReturn(true);
+    when(secondaryStore.fire(1)).thenReturn(true);
+    when(secondaryStore.isEmpty()).thenReturn(true);
+
+    // fire with the primary
+    ship.fireTorpedo(FiringMode.SINGLE);
+    ship.fireTorpedo(FiringMode.SINGLE);
+
+    verify(torpedoStore,times(2)).fire(1);
+    verify(secondaryStore,never()).fire(1);
   }
   @Test
   public void fireTorpedo_PrimaryEmpty_SecondaryFire() {

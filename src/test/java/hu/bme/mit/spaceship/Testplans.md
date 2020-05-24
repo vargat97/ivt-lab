@@ -10,3 +10,5 @@
 
 -Firing Mode is ALL, test that if all stores report failure, the returning value is false.
 
+
+- Plus add: last fire was from primary, so next in the line is the secondary, but secondary store is empty. 
